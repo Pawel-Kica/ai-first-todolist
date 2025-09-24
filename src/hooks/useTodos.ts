@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Todo, TodoStats, TodoFilters } from '@/types/todo';
+import { Todo, TodoFilters, Priority } from '@/types/todo';
 
 const STORAGE_KEY = 'beautifulTodos';
 
@@ -64,20 +64,11 @@ export const useTodos = () => {
     });
   };
 
-  // Get statistics
-  const getStats = (): TodoStats => {
-    const total = todos.length;
-    const completed = todos.filter(todo => todo.completed).length;
-    const pending = total - completed;
-
-    return { total, pending, completed };
-  };
 
   return {
     todos: getFilteredTodos(),
     allTodos: todos,
     filters,
-    stats: getStats(),
     addTodo,
     toggleComplete,
     deleteTodo,

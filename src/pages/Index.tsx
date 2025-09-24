@@ -1,5 +1,4 @@
 import { useTodos } from '@/hooks/useTodos';
-import { TodoStats } from '@/components/TodoStats';
 import { AddTaskForm } from '@/components/AddTaskForm';
 import { TodoFilters } from '@/components/TodoFilters';
 import { TodoItem } from '@/components/TodoItem';
@@ -9,7 +8,6 @@ const Index = () => {
   const {
     todos,
     filters,
-    stats,
     addTodo,
     toggleComplete,
     deleteTodo,
@@ -26,16 +24,14 @@ const Index = () => {
               <ListTodo className="h-8 w-8 text-primary-foreground" />
             </div>
             <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-primary-hover bg-clip-text text-transparent">
-              Beautiful Todo List
+              AI-first Todo List
             </h1>
           </div>
           <p className="text-lg text-muted-foreground">
-            Organize your tasks with style and efficiency
+            Smart task management build by artificial intelligence
           </p>
         </div>
 
-        {/* Statistics */}
-        <TodoStats stats={stats} />
 
         {/* Add Task Form */}
         <AddTaskForm onAddTask={addTodo} />

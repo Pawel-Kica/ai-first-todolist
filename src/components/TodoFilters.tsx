@@ -1,4 +1,4 @@
-import { TodoFilters as TodoFiltersType } from '@/types/todo';
+import { TodoFilters as TodoFiltersType, Priority } from '@/types/todo';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
@@ -21,35 +21,34 @@ export const TodoFilters = ({ filters, onFiltersChange }: TodoFiltersProps) => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
           <div className="space-y-2">
-            <Label className="text-sm font-medium">Filter by Priority</Label>
-            <Select 
-              value={filters.priority} 
-              onValueChange={(value) => onFiltersChange({ ...filters, priority: value })}
+            <Select
+              value={filters.priority}
+              onValueChange={(value) => onFiltersChange({ ...filters, priority: value as Priority | 'all' })}
             >
               <SelectTrigger className="border-border/50">
                 <SelectValue placeholder="All Priorities" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Priorities</SelectItem>
-                <SelectItem value="high">High</SelectItem>
-                <SelectItem value="medium">Medium</SelectItem>
-                <SelectItem value="low">Low</SelectItem>
+                <SelectItem value={Priority.HIGH}>High</SelectItem>
+                <SelectItem value={Priority.MEDIUM}>Medium</SelectItem>
+                <SelectItem value={Priority.LOW}>Low</SelectItem>
               </SelectContent>
             </Select>
           </div>
           
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-3">
             <Checkbox
               id="showCompleted"
               checked={filters.showCompleted}
-              onCheckedChange={(checked) => 
+              onCheckedChange={(checked) =>
                 onFiltersChange({ ...filters, showCompleted: !!checked })
               }
-              className="data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+              className="data-[state=checked]:bg-primary data-[state=checked]:border-primary h-5 w-5"
             />
-            <Label 
-              htmlFor="showCompleted" 
-              className="text-sm font-medium cursor-pointer"
+            <Label
+              htmlFor="showCompleted"
+              className="text-base font-medium cursor-pointer"
             >
               Show completed tasks
             </Label>

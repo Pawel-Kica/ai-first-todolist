@@ -1,20 +1,21 @@
+export enum Priority {
+  LOW = 'low',
+  MEDIUM = 'medium',
+  HIGH = 'high'
+}
+
 export interface Todo {
   id: string;
   title: string;
   description: string;
   dueDate: string;
-  priority: 'low' | 'medium' | 'high';
+  priority: Priority;
   completed: boolean;
   createdAt: string;
 }
 
-export interface TodoStats {
-  total: number;
-  pending: number;
-  completed: number;
-}
 
 export interface TodoFilters {
-  priority: string;
+  priority: Priority | 'all';
   showCompleted: boolean;
 }

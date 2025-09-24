@@ -5,7 +5,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Todo } from '@/types/todo';
+import { Todo, Priority } from '@/types/todo';
 import { PlusCircle } from 'lucide-react';
 
 interface AddTaskFormProps {
@@ -16,7 +16,7 @@ export const AddTaskForm = ({ onAddTask }: AddTaskFormProps) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [dueDate, setDueDate] = useState('');
-  const [priority, setPriority] = useState<'low' | 'medium' | 'high'>('medium');
+  const [priority, setPriority] = useState<Priority>(Priority.MEDIUM);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,7 +33,7 @@ export const AddTaskForm = ({ onAddTask }: AddTaskFormProps) => {
     setTitle('');
     setDescription('');
     setDueDate('');
-    setPriority('medium');
+    setPriority(Priority.MEDIUM);
   };
 
   return (
@@ -84,14 +84,14 @@ export const AddTaskForm = ({ onAddTask }: AddTaskFormProps) => {
             </div>
             <div className="space-y-2">
               <Label htmlFor="priority" className="text-sm font-medium">Priority</Label>
-              <Select value={priority} onValueChange={(value) => setPriority(value as 'low' | 'medium' | 'high')}>
+              <Select value={priority} onValueChange={(value) => setPriority(value as Priority)}>
                 <SelectTrigger className="border-border/50 focus:border-primary">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="low">Low</SelectItem>
-                  <SelectItem value="medium">Medium</SelectItem>
-                  <SelectItem value="high">High</SelectItem>
+                  <SelectItem value={Priority.LOW}>Low</SelectItem>
+                  <SelectItem value={Priority.MEDIUM}>Medium</SelectItem>
+                  <SelectItem value={Priority.HIGH}>High</SelectItem>
                 </SelectContent>
               </Select>
             </div>

@@ -1,17 +1,18 @@
 import { Badge } from '@/components/ui/badge';
+import { Priority } from '@/types/todo';
 
 interface PriorityBadgeProps {
-  priority: 'low' | 'medium' | 'high';
+  priority: Priority;
 }
 
 export const PriorityBadge = ({ priority }: PriorityBadgeProps) => {
   const getVariant = () => {
     switch (priority) {
-      case 'high':
+      case Priority.HIGH:
         return 'destructive';
-      case 'medium':
+      case Priority.MEDIUM:
         return 'secondary';
-      case 'low':
+      case Priority.LOW:
         return 'outline';
       default:
         return 'secondary';
@@ -20,11 +21,11 @@ export const PriorityBadge = ({ priority }: PriorityBadgeProps) => {
 
   const getColor = () => {
     switch (priority) {
-      case 'high':
+      case Priority.HIGH:
         return 'bg-danger text-danger-foreground';
-      case 'medium':
+      case Priority.MEDIUM:
         return 'bg-warning text-warning-foreground';
-      case 'low':
+      case Priority.LOW:
         return 'bg-success text-success-foreground';
       default:
         return 'bg-secondary text-secondary-foreground';
