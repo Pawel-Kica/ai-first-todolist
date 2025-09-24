@@ -6,19 +6,6 @@ interface PriorityBadgeProps {
 }
 
 export const PriorityBadge = ({ priority }: PriorityBadgeProps) => {
-  const getVariant = () => {
-    switch (priority) {
-      case Priority.HIGH:
-        return 'destructive';
-      case Priority.MEDIUM:
-        return 'secondary';
-      case Priority.LOW:
-        return 'outline';
-      default:
-        return 'secondary';
-    }
-  };
-
   const getColor = () => {
     switch (priority) {
       case Priority.HIGH:

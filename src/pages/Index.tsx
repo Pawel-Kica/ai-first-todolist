@@ -1,4 +1,4 @@
-import { useTodos } from '@/hooks/useTodos';
+import { useTodos } from '@/hooks/use-todos';
 import { AddTaskForm } from '@/components/AddTaskForm';
 import { TodoFilters } from '@/components/TodoFilters';
 import { TodoItem } from '@/components/TodoItem';
