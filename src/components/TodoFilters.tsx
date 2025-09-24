@@ -44,7 +44,7 @@ export const TodoFilters = ({ filters, onFiltersChange }: TodoFiltersProps) => {
               onCheckedChange={(checked) =>
                 onFiltersChange({ ...filters, showCompleted: !!checked })
               }
-              className="data-[state=checked]:bg-primary data-[state=checked]:border-primary h-5 w-5"
+              className="data-[state=checked]:bg-gradient-primary data-[state=checked]:border-primary h-5 w-5"
             />
             <Label
               htmlFor="showCompleted"

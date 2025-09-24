@@ -97,9 +97,9 @@ export const AddTaskForm = ({ onAddTask }: AddTaskFormProps) => {
             </div>
           </div>
 
-          <Button 
-            type="submit" 
-            className="w-full bg-gradient-success hover:opacity-90 text-success-foreground shadow-soft"
+          <Button
+            type="submit"
+            className="w-full bg-gradient-primary hover:opacity-90 text-primary-foreground shadow-soft"
             disabled={!title.trim()}
           >
             <PlusCircle className="h-4 w-4 mr-2" />
