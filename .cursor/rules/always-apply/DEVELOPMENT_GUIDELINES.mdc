@@ -1,0 +1,75 @@
+---
+alwaysApply: true
+---
+
+# Development Guidelines
+
+## Project Description
+
+A simple to-do list application built to demonstrate AI features.
+
+## Tech Stack
+
+- **Frontend Framework**: React 18.3.1 with TypeScript
+- **Build Tool**: Vite 5.4.19
+- **Styling**: Tailwind CSS 3.4.17 with custom design system
+- **UI Components**: shadcn/ui (Radix UI primitives)
+- **State Management**: React hooks with localStorage persistence
+- **Routing**: React Router DOM 6.30.1
+- **Form Handling**: React Hook Form 7.61.1
+- **Data Fetching**: TanStack React Query 5.83.0
+- **Icons**: Lucide React 0.462.0
+- **Linting**: ESLint 9.32.0 with TypeScript support
+- **Development**: SWC for fast compilation
+
+## Coding General Guidelines
+
+### Naming Conventions
+
+- **Files**: PascalCase for components (`TodoItem.tsx`), kebab-case for utilities (`use-todos.ts`)
+- **Components**: PascalCase (`AddTaskForm`, `PriorityBadge`)
+- **Hooks**: camelCase with `use-` prefix (`use-todos.ts`)
+- **Types/Interfaces**: PascalCase (`Todo`, `TodoFilters`, `Priority`)
+- **Variables/Functions**: camelCase (`addTodo`, `toggleComplete`)
+- **Constants**: UPPER_SNAKE_CASE (`STORAGE_KEY`)
+
+### TypeScript Usage
+
+- Always use TypeScript interfaces for component props
+- Export enums for shared constants (e.g., `Priority` enum), use enums as types
+
+# Development Guidelines
+
+## Project Description
+
+A simple to-do list application built to demonstrate AI features.
+
+## Tech Stack
+
+- **Frontend Framework**: React 18.3.1 with TypeScript
+- **Build Tool**: Vite 5.4.19
+- **Styling**: Tailwind CSS 3.4.17 with custom design system
+- **UI Components**: shadcn/ui (Radix UI primitives)
+- **State Management**: React hooks with localStorage persistence
+- **Routing**: React Router DOM 6.30.1
+- **Form Handling**: React Hook Form 7.61.1
+- **Data Fetching**: TanStack React Query 5.83.0
+- **Icons**: Lucide React 0.462.0
+- **Linting**: ESLint 9.32.0 with TypeScript support
+- **Development**: SWC for fast compilation
+
+## Coding General Guidelines
+
+### Naming Conventions
+
+- **Files**: PascalCase for components (`TodoItem.tsx`), kebab-case for utilities (`use-todos.ts`)
+- **Components**: PascalCase (`AddTaskForm`, `PriorityBadge`)
+- **Hooks**: camelCase with `use-` prefix (`use-todos.ts`)
+- **Types/Interfaces**: PascalCase (`Todo`, `TodoFilters`, `Priority`)
+- **Variables/Functions**: camelCase (`addTodo`, `toggleComplete`)
+- **Constants**: UPPER_SNAKE_CASE (`STORAGE_KEY`)
+
+### TypeScript Usage
+
+- Always use TypeScript interfaces for component props
+- Export enums for shared constants (e.g., `Priority` enum), use enums as types

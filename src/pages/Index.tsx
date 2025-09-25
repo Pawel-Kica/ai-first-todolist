@@ -1,18 +1,12 @@
-import { useTodos } from '@/hooks/use-todos';
-import { AddTaskForm } from '@/components/AddTaskForm';
-import { TodoFilters } from '@/components/TodoFilters';
-import { TodoItem } from '@/components/TodoItem';
-import { CheckCircle, ListTodo } from 'lucide-react';
+import { useTodos } from "@/hooks/use-todos";
+import { AddTaskForm } from "@/components/AddTaskForm";
+import { TodoFilters } from "@/components/TodoFilters";
+import { TodoItem } from "@/components/TodoItem";
+import { CheckCircle, ListTodo } from "lucide-react";
 
 const Index = () => {
-  const {
-    todos,
-    filters,
-    addTodo,
-    toggleComplete,
-    deleteTodo,
-    setFilters,
-  } = useTodos();
+  const { todos, filters, addTodo, toggleComplete, deleteTodo, setFilters } =
+    useTodos();
 
   return (
     <div className="min-h-screen bg-gradient-bg relative">
@@ -24,23 +18,20 @@ const Index = () => {
               <ListTodo className="h-8 w-8 text-primary-foreground" />
             </div>
             <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-primary-hover bg-clip-text text-transparent">
-              AI-first Todo List
+              Todolist 100% AI
             </h1>
           </div>
           <p className="text-lg text-muted-foreground">
-            Smart task management build by artificial intelligence
+            Showcase of true potential of AI coding. 100% of code in this
+            project is AI generated.
           </p>
         </div>
-
 
         {/* Add Task Form */}
         <AddTaskForm onAddTask={addTodo} />
 
         {/* Filters */}
-        <TodoFilters 
-          filters={filters}
-          onFiltersChange={setFilters}
-        />
+        <TodoFilters filters={filters} onFiltersChange={setFilters} />
 
         {/* Tasks List */}
         <div className="space-y-4">
@@ -50,7 +41,7 @@ const Index = () => {
               Your Tasks ({todos.length})
             </h2>
           </div>
-          
+
           {todos.length === 0 ? (
             <div className="text-center py-12">
               <div className="w-24 h-24 mx-auto mb-4 bg-muted rounded-full flex items-center justify-center">
@@ -60,9 +51,9 @@ const Index = () => {
                 No tasks found
               </h3>
               <p className="text-muted-foreground">
-                {filters.priority !== 'all' || !filters.showCompleted
-                  ? 'Try adjusting your filters or add a new task.'
-                  : 'Add your first task to get started!'}
+                {filters.priority !== "all" || !filters.showCompleted
+                  ? "Try adjusting your filters or add a new task."
+                  : "Add your first task to get started!"}
               </p>
             </div>
           ) : (
