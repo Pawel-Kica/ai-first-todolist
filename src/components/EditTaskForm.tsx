@@ -28,7 +28,6 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 import { Todo, Priority } from "@/types/todo";
-import { format } from "date-fns";
 
 const formSchema = z.object({
   title: z.string().min(1, "Title is required"),
@@ -58,7 +57,7 @@ export const EditTaskForm = ({
     defaultValues: {
       title: todo.title,
       description: todo.description || "",
-      dueDate: todo.dueDate ? format(new Date(todo.dueDate), "yyyy-MM-dd") : "",
+      dueDate: todo.dueDate ? new Date(todo.dueDate).toISOString().split('T')[0] : "",
       priority: todo.priority,
     },
   });
