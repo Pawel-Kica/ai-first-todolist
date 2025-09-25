@@ -5,8 +5,15 @@ import { TodoItem } from "@/components/TodoItem";
 import { CheckCircle, ListTodo } from "lucide-react";
 
 const Index = () => {
-  const { todos, filters, addTodo, toggleComplete, deleteTodo, setFilters } =
-    useTodos();
+  const {
+    todos,
+    filters,
+    addTodo,
+    toggleComplete,
+    deleteTodo,
+    setFilters,
+    updateTodo,
+  } = useTodos();
 
   return (
     <div className="min-h-screen bg-gradient-bg relative">
@@ -64,6 +71,7 @@ const Index = () => {
                   todo={todo}
                   onToggleComplete={toggleComplete}
                   onDelete={deleteTodo}
+                  onUpdate={updateTodo}
                 />
               ))}
             </div>

@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
-import { Todo, TodoFilters, Priority } from '@/types/todo';
+import { useState, useEffect } from "react";
+import { Todo, TodoFilters, Priority } from "@/types/todo";
 
-const STORAGE_KEY = 'beautifulTodos';
+const STORAGE_KEY = "beautifulTodos";
 
 export const useTodos = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [filters, setFilters] = useState<TodoFilters>({
-    priority: 'all',
+    priority: "all",
     showCompleted: true,
   });
 
@@ -17,7 +17,7 @@ export const useTodos = () => {
       try {
         setTodos(JSON.parse(stored));
       } catch (error) {
-        console.error('Error parsing stored todos:', error);
+        console.error("Error parsing stored todos:", error);
       }
     }
   }, []);
@@ -27,31 +27,42 @@ export const useTodos = () => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
   }, [todos]);
 
-  const addTodo = (todoData: Omit<Todo, 'id' | 'completed' | 'createdAt'>) => {
+  const addTodo = (todoData: Omit<Todo, "id" | "completed" | "createdAt">) => {
     const newTodo: Todo = {
       ...todoData,
       id: crypto.randomUUID(),
       completed: false,
       createdAt: new Date().toISOString(),
     };
-    setTodos(prev => [newTodo, ...prev]);
+    setTodos((prev) => [newTodo, ...prev]);
+  };
+
+  const updateTodo = (
+    id: string,
+    updatedData: Partial<Omit<Todo, "id" | "createdAt">>
+  ) => {
+    setTodos((prev) =>
+      prev.map((todo) => (todo.id === id ? { ...todo, ...updatedData } : todo))
+    );
   };
 
   const toggleComplete = (id: string) => {
-    setTodos(prev => prev.map(todo => 
-      todo.id === id ? { ...todo, completed: !todo.completed } : todo
-    ));
+    setTodos((prev) =>
+      prev.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
   };
 
   const deleteTodo = (id: string) => {
-    setTodos(prev => prev.filter(todo => todo.id !== id));
+    setTodos((prev) => prev.filter((todo) => todo.id !== id));
   };
 
   // Get filtered todos
   const getFilteredTodos = (): Todo[] => {
-    return todos.filter(todo => {
+    return todos.filter((todo) => {
       // Priority filter
-      if (filters.priority !== 'all' && todo.priority !== filters.priority) {
+      if (filters.priority !== "all" && todo.priority !== filters.priority) {
         return false;
       }
 
@@ -64,12 +75,12 @@ export const useTodos = () => {
     });
   };
 
-
   return {
     todos: getFilteredTodos(),
     allTodos: todos,
     filters,
     addTodo,
+    updateTodo,
     toggleComplete,
     deleteTodo,
     setFilters,

@@ -4,19 +4,19 @@ alwaysApply: false
 
 ## Simple Plan
 
+A Simple Plan is a minimal planning artifact: take a feature and generate the simple user stories for it—nothing more.
+
 ### Simple Plan — Guidelines
 
 - Provide only what is necessary to execute. Keep it brief and outcome-oriented.
-- Structure your plan exactly in this order: Context → Feature → Required changes.
-- Reference code using @ file paths from the repo root (e.g., `@src/components/...`).
-- For this frontend-only app, focus on component, hook, and type changes.
-- Output: Save the final plan as a markdown file under `docs/plans`, named with the concise feature name (e.g., `docs/plans/add-task-tags.md`). The first line of the file must be the feature name.
+- Focus on user stories; avoid technical implementation details.
+- Structure in this order: Title → Context → User stories.
+- Output: Save the plan under `docs/plans/plan-<kebab-case-feature>.md` and begin the file with `Title: <feature name>`.
 
 ### Template
 
 ```markdown
 Title: <concise feature name>
-File: docs/plans/<kebab-case-concise-feature-name>.md
 
 Context
 
@@ -24,55 +24,9 @@ Context
 - Why: <business or technical driver>
 - Scope: <what is in / out>
 
-Feature
+Simple user stories (without benefit, outcome, reason)
 
-- Name: <feature name>
-- Description: <concise description of behavior and user impact>
-
-Required changes
-
-IMPORTANT NOTE: For any section below, write "Not needed" if no changes are required.
-
-- Types/Interfaces
-  - @<path/to/types.ts>: <brief change description>
-- Components
-  - @<path/to/component.tsx>: <brief change description>
-- Hooks/Logic
-  - @<path/to/hook.ts>: <brief change description>
-- Styling
-  - @<path/to/styles>: <styling updates needed>
-- Anything else
-  - Not needed (unless really required)
+- As a <user/persona>, I can <capability>
+- As a <user/persona>, I can <action>
+- As a <user/persona>, I can <thing>
 ```
-
-### Example - Add Ability to Tag Tasks
-
-Title: Add Ability to Tag Tasks
-File: docs/plans/add-task-tags.md
-
-Context
-
-- What: Add optional tags field to todos to allow categorization and better organization.
-- Why: Users need to categorize and filter tasks by topics/projects for better organization.
-- Scope: Todo interface, form components, filtering logic. No backend changes needed.
-- Note: Tags are a separate entity that can exist without tasks; tasks can exist without tags.
-
-Feature
-
-- Name: Task Tags
-- Description: Users can add/remove multiple tags to tasks. Tags are displayed as colored badges and can be used for filtering. Tags are a separate entity and tasks reference tags by id. Tags can exist without tasks; tasks can exist without tags.
-
-Required changes
-
-- Types/Interfaces
-  - @src/types/tag.ts: new `Tag` interface with `id: string`, `name: string`, and optional `color?: string` for consistent display
-  - @src/types/todo.ts: add optional `tagIds: string[]` field to `Todo` (replace any existing `tags` string array); update `TodoFilters` to support filtering by tag ids
-- Components
-  - @src/components/AddTaskForm.tsx: add tag input field with add/remove functionality; allow selecting existing tags and creating new tags
-  - @src/components/TodoItem.tsx: display tags as colored badges below description (resolve from `tagIds` to tag objects)
-  - @src/components/TodoFilters.tsx: add tag filter dropdown with multi-select capability (working with tag ids)
-  - @src/components/TagInput.tsx: new component for tag input with autocomplete and validation; supports selecting existing tags and creating new ones
-  - @src/components/TagBadge.tsx: new component for displaying individual tags with consistent colors
-- Hooks/Logic
-  - @src/hooks/use-tags.ts: new hook providing CRUD operations for tags with localStorage persistence (e.g., `getTags`, `addTag`, `updateTag`, `deleteTag`)
-  - @src/hooks/use-todos.ts: update addTodo/editTodo to handle `tagIds`; add tag filtering logic to `getFilteredTodos` based on selected tag ids; ensure behavior is correct when tasks have no `tagIds`
