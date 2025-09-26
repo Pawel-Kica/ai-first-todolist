@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Sync Development Guidelines Script
-# Copies content from .cursor/rules/DEVELOPMENT_GUIDELINES.mdc to AGENTS.md, CLAUDE.md, and README.md
+# Copies content from .cursor/rules/always-apply/DEVELOPMENT_GUIDELINES.mdc to AGENTS.md, CLAUDE.md, and README.md
 
 set -e
 
-SOURCE_FILE=".cursor/rules/DEVELOPMENT_GUIDELINES.mdc"
+SOURCE_FILE=".cursor/rules/always-apply/DEVELOPMENT_GUIDELINES.mdc"
 TARGET_FILES=("AGENTS.md" "CLAUDE.md" "README.md")
 
 # Check if source file exists

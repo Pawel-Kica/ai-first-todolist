@@ -1,3 +1,7 @@
+---
+alwaysApply: true
+---
+
 # Development Guidelines
 
 ## Project Description
@@ -33,3 +37,10 @@ A simple to-do list application built to demonstrate AI features.
 
 - Always use TypeScript interfaces for component props
 - Export enums for shared constants (e.g., `Priority` enum), use enums as types
+
+## Running and testing app
+
+- DO's
+  - run dev server using `npm run dev`
+- DONT's
+  - no need to use other commands like: `npm run build, build:dev, lint, preview` - command in DO's (`npm run dev`) should be fully sufficient
