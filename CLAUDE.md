@@ -44,3 +44,7 @@ EXTREMELY IMPORTANT: don't run app using `npm run dev` commands unless specifica
 
 1. When asked to run app -> use `npm run dev`
 2. Never run use other commands like: `npm run build, build:dev, lint, preview`
+
+## Testing
+
+1. Never test your changes unless specifically asked.
