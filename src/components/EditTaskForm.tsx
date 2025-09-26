@@ -28,6 +28,7 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 import { Todo, Priority } from "@/types/todo";
+import { PriorityOption } from "@/components/PriorityOption";
 
 const formSchema = z.object({
   title: z.string().min(1, "Title is required"),
@@ -136,9 +137,15 @@ export const EditTaskForm = ({
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value={Priority.LOW}>Low</SelectItem>
-                        <SelectItem value={Priority.MEDIUM}>Medium</SelectItem>
-                        <SelectItem value={Priority.HIGH}>High</SelectItem>
+                        <SelectItem value={Priority.LOW}>
+                          <PriorityOption priority={Priority.LOW} />
+                        </SelectItem>
+                        <SelectItem value={Priority.MEDIUM}>
+                          <PriorityOption priority={Priority.MEDIUM} />
+                        </SelectItem>
+                        <SelectItem value={Priority.HIGH}>
+                          <PriorityOption priority={Priority.HIGH} />
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />

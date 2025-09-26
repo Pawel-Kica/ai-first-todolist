@@ -3,6 +3,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent } from '@/components/ui/card';
+import { PriorityOption } from '@/components/PriorityOption';
 import { Filter } from 'lucide-react';
 
 interface TodoFiltersProps {
@@ -30,9 +31,15 @@ export const TodoFilters = ({ filters, onFiltersChange }: TodoFiltersProps) => {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Priorities</SelectItem>
-                <SelectItem value={Priority.HIGH}>High</SelectItem>
-                <SelectItem value={Priority.MEDIUM}>Medium</SelectItem>
-                <SelectItem value={Priority.LOW}>Low</SelectItem>
+                <SelectItem value={Priority.HIGH}>
+                  <PriorityOption priority={Priority.HIGH} />
+                </SelectItem>
+                <SelectItem value={Priority.MEDIUM}>
+                  <PriorityOption priority={Priority.MEDIUM} />
+                </SelectItem>
+                <SelectItem value={Priority.LOW}>
+                  <PriorityOption priority={Priority.LOW} />
+                </SelectItem>
               </SelectContent>
             </Select>
           </div>

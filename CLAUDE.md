@@ -40,7 +40,7 @@ A simple to-do list application built to demonstrate AI features.
 
 ## Running and testing app
 
-- DO's
-  - run dev server using `npm run dev`
-- DONT's
-  - no need to use other commands like: `npm run build, build:dev, lint, preview` - command in DO's (`npm run dev`) should be fully sufficient
+EXTREMELY IMPORTANT: don't run app using `npm run dev` commands unless specifically asked
+
+1. When asked to run app -> use `npm run dev`
+2. Never run use other commands like: `npm run build, build:dev, lint, preview`

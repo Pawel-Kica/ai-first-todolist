@@ -1,0 +1,38 @@
+## Simple Plan
+
+A Simple Plan is a minimal planning artifact: take a feature and generate the simple user stories for it—nothing more.
+
+### Simple Plan — Guidelines
+
+- Provide only what is necessary to execute. Keep it brief and outcome-oriented.
+- In user stories:
+  - avoid technical implementation details in user stores, "Implementation Notes" is a right section for it
+  - avoid benefit, outcome, reason. Just "As a user, I can..."
+- Structure in this order: Title → Context → User stories → Implementation notes
+- Output: Save the plan under `docs/plans/plan-<kebab-case-feature>.md` and begin the file with `Title: <feature name>`.
+
+### Output Template
+
+```markdown
+Title: <concise feature name>
+
+Context
+
+- What: <1–2 sentences explaining the change>
+- Why: <business or technical driver>
+- Scope: <what is in / out>
+
+User stories
+
+- As a <user/persona>, I can <capability>
+- As a <user/persona>, I can...
+
+Implementation Notes:
+
+- Couple of bullet points that describes how this feature will be implemented
+```
+
+### Simple Plan - Checklist
+
+1. Make sure the following sections are present: Title, Context, User Stories, Implementation Notes.s
+2. Plan is saved under `docs/plans/plan-<kebab-case-feature>.md`

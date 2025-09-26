@@ -5,7 +5,9 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useToast } from '@/hooks/use-toast';
 import { Todo, Priority } from '@/types/todo';
+import { PriorityOption } from '@/components/PriorityOption';
 import { PlusCircle } from 'lucide-react';
 
 interface AddTaskFormProps {
@@ -17,6 +19,7 @@ export const AddTaskForm = ({ onAddTask }: AddTaskFormProps) => {
   const [description, setDescription] = useState('');
   const [dueDate, setDueDate] = useState('');
   const [priority, setPriority] = useState<Priority>(Priority.MEDIUM);
+  const { toast } = useToast();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,6 +30,12 @@ export const AddTaskForm = ({ onAddTask }: AddTaskFormProps) => {
       description: description.trim(),
       dueDate,
       priority,
+    });
+
+    // Show success notification
+    toast({
+      title: "Task created!",
+      description: `"${title.trim()}" has been added to your tasks.`,
     });
 
     // Reset form
@@ -89,9 +98,15 @@ export const AddTaskForm = ({ onAddTask }: AddTaskFormProps) => {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value={Priority.LOW}>Low</SelectItem>
-                  <SelectItem value={Priority.MEDIUM}>Medium</SelectItem>
-                  <SelectItem value={Priority.HIGH}>High</SelectItem>
+                  <SelectItem value={Priority.LOW}>
+                    <PriorityOption priority={Priority.LOW} />
+                  </SelectItem>
+                  <SelectItem value={Priority.MEDIUM}>
+                    <PriorityOption priority={Priority.MEDIUM} />
+                  </SelectItem>
+                  <SelectItem value={Priority.HIGH}>
+                    <PriorityOption priority={Priority.HIGH} />
+                  </SelectItem>
                 </SelectContent>
               </Select>
             </div>
